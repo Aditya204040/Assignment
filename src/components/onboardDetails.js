@@ -4,8 +4,9 @@ import bun2 from "./imgs/bun2.jpg";
 import bun3 from "./imgs/bun3.jpg";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { BsArrowRight } from "react-icons/bs";
-import { useState } from "react";
-import './styles/circularMotion.css';
+import { useState ,useEffect} from "react";
+import progress from "./imgs/EllipsePro.jpg";
+import progressbg from "./imgs/EllipseBg.jpg";
 
 function OnboardDetailsCard(){
     //BG Images
@@ -22,6 +23,16 @@ function OnboardDetailsCard(){
 
     const[bgImage,setBgImage] = useState(images.first);
 
+    const [rotation, setRotation] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+        setRotation(prevRotation => prevRotation + 45); 
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
+
 
     function handleClick(){
         if(pageCount1){
@@ -35,7 +46,6 @@ function OnboardDetailsCard(){
             setBgImage(images.third);
         }
     }
-
 
     const details = {
         header:{
@@ -80,9 +90,16 @@ function OnboardDetailsCard(){
 
             : <div className="flex justify-center items-center m-4 mt-6"> 
             <NavLink to="/Login">
-            <div className=" bg-[#FE8C00] h-[5.87rem] w-[5.87rem] border-4 border-[#C2C2C2] rounded-full flex justify-center items-center relative">
-            <div className=" bg-transparent flex w-full h-full rounded-full absolute top-0"><div className="circle w-[100%] h-[100%] bg-white"></div></div>
-            <BsArrowRight style={{ color: '#FE8C00'}} size={'60px'} className="bg-white font-bold p-[1.25rem] rounded-full"/>
+            <div className=" bg-[#FE8C00] h-[5.87rem] w-[5.87rem] border-4 
+            border-transparent rounded-full flex justify-center items-center relative overflow-hidden">
+            <div className=" bg-transparent flex w-full h-full ">
+            <img src={progress} className="rotatable rounded-full absolute top-0  bg-white"
+            style={{ transform: `rotate(${rotation}deg)` }}></img>
+            <img src={progressbg} className="absolute top-0 z-20 w-full rounded-full border-[8px] border-transparent "></img>
+            </div>
+            <div className="flex justify-center items-center absolute z-30 p-4">
+            <BsArrowRight style={{ color: '#FE8C00'}} size={'60px'} className="bg-white font-bold rounded-full p-[1.1rem] "/>
+            </div>
             </div>
             </NavLink>
 

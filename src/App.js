@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+//components
+import Login from './components/login';
+import Onboarding from './components/onboarding';
+import GoogleAuth from './components/googleAuth';
+import Signup from './components/signup';
+import SuccessLogin from './components/LoginSuccess';
+import TrackingScreen from './components/Tracking';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App mx-auto">
+      <Routes>
+        <Route path='/' element={<Onboarding></Onboarding>}/>
+        <Route path='login' element={<Login/>} />
+        <Route path='signup' element={<Signup/>}/>
+        <Route path='Onboard' element={<Onboarding/>} />
+        <Route path='googleAuth' element={<GoogleAuth/>}/>
+        <Route path='LoginSuccess' element={<SuccessLogin/>}/>
+        <Route path='/Track' element={<TrackingScreen/>}/>
+      </Routes>
+      <ToastContainer/>
     </div>
   );
 }

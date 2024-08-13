@@ -29,7 +29,7 @@ const Drawer = ({ isOpen,DrawerHandler}) => {
 
     <div className={`fixed h-[32.25rem] bottom-0 left-0 right-0 opacity-1 p-4 transform transition-transform ${isOpen ? 'translate-y-0' : 'translate-y-full'}`} style={{ transition: 'transform 0.3s ease-in-out' }}>
 
-      <div className="bg-white w-[23.1%] rounded-t-[2.2rem] h-[100%] mx-auto flex-col my-4">
+      <div className="bg-white lg:w-[23.1%] md:w-[100%] sm:w-[100%] rounded-t-[2.2rem] h-[100%] mx-auto flex-col my-4">
 
       <div className="w-[20.4rem] h-[1.5rem] mx-auto mb-2">
         <button onClick={DrawerHandler} className="-mt-1 p-2 rounded-xl ">
